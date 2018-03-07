@@ -109,6 +109,7 @@ public class RegexTest {
         if (matcher.find()) {
             String group = matcher.group();
             System.out.println(group);
+
             System.out.println(str.replace(group,group.toUpperCase()));//<H1>INDEX PAGE HOME</H1>
             System.out.println(matcher.replaceAll(group.toUpperCase()));//<H1>INDEX PAGE HOME</H1>
         }
