@@ -14,10 +14,6 @@ import org.springframework.context.annotation.PropertySources;
 public class ToolsApplicationMain
 {
     public static void main( String[] args ) {
-
-
         SpringApplication.run(ToolsApplicationMain.class,args);
-
-        
     }
 }
