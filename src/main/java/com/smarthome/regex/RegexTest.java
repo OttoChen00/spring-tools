@@ -81,7 +81,7 @@ public class RegexTest {
      * 回溯引用在替换中的作用
      */
     @Test
-    public void test_05(){
+    public void test_03(){
         String str = "<h1>Index Page Home</h1>";
         Pattern pattern = Pattern.compile("(<[Hh][1-6]>)(.*)(</[Hh][1-6]>)");
         //?<=表示该子表达式之后的内容
@@ -115,5 +115,24 @@ public class RegexTest {
         }
     }
 
-
+    @Test
+    public void test_05(){
+        /**
+         * 2018-04-03 15:17:03.552 DEBUG [pool-3-thread-1][BrokerStatusLogHandler.java:53] - Action [UNSUB] Broker [172.31.34.128] Cid [00D0BAE4500BC99991B578E0] topic [$events/broker/00D0BAE4500BC99991B578E0/binded/1524569785123]
+         2018-04-03 15:17:03.588 DEBUG [pool-3-thread-3][BrokerStatusLogHandler.java:33] - Action [DISCONNECT] Broker [172.31.34.128] Cid [00D0BAE4500BC99991B578E0] Content [disconnect]
+         2018-04-03 15:17:03.590 DEBUG [pool-3-thread-3][BrokerStatusLogHandler.java:45] - Action [PUBLISH] Broker [172.31.34.128] Cid [phihome_admin] topic [$events/broker/00D0BAE4500BC99991B578E0/disconnected] body [] qos [0]
+         */
+        String str = "2018-04-03 15:17:03.588 DEBUG [pool-3-thread-3][BrokerStatusLogHandler.java:33] - Action [DISCONNECT] Broker [172.31.34.128] Cid [00D0BAE4500BC99991B578E0] Content [disconnect]";
+        String reg = ".*Action \\[(\\w+)\\] Broker \\[(\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3})\\] Cid \\[(\\w+)\\].*";//匹配只有三个字母的单词
+        String reg2 = ".*Action \\[(\\w)\\] Broker \\[172.31.34.128\\] Cid \\[00D0BAE4500BC99991B578E0\\].*";
+        //将规则封装成对象。
+        Pattern p = Pattern.compile(reg);
+        //让正则对象和要作用的字符串相关联。获取匹配器对象。
+        Matcher m  = p.matcher(str);
+        while(m.find()) {
+            System.out.println(m.group(1));//group返回找到的子串
+            System.out.println(m.group(2));//group返回找到的子串
+            System.out.println(m.group(3));//group返回找到的子串
+        }
+    }
 }
