@@ -170,13 +170,13 @@ public class MD5Util {
         String requestBody = "{\"uid\":\"000000001\",\"qid\":\"222222222\",\"raw_query\":\"\",\"req_num\":\"10\",\"res_from_time\":\"\",\"res_end_time\":\"\",\"query_info\":{\"news_category\":\"娱乐\",\"date_time\":\"\",\"person\":\"杨幂\",\"location\":\"\",\"keywords\":\"\",\"srcfrom\":\"\",\"only_voice\":False}}";
         stringBuilder.append(requestBody);
 //        stringBuilder.append(" ");
-        long timestamp = OptDateUtil.getNowTimeLong();
+        long timestamp = OptDateUtil.getNowTimeLong() - 80;
         System.out.println(timestamp);
-        stringBuilder.append("1522237638");
+        stringBuilder.append(timestamp);
         String parmStr = stringBuilder.toString();
         System.out.println(parmStr);
         System.out.println(md5Encode(parmStr));
-        System.out.println(md5Encode("hello world"));
+
     }
 
     @Test
@@ -188,12 +188,13 @@ public class MD5Util {
         stringBuilder.append(appSecret);
         String requestBody ="";
         stringBuilder.append(requestBody);
-        long timestamp = OptDateUtil.getNowTimeLong();
+        long timestamp = OptDateUtil.getNowTimeLong()-80;
         System.out.println(timestamp);
         stringBuilder.append(timestamp);
         String parmStr = stringBuilder.toString();
         System.out.println(parmStr);
         System.out.println(md5Encode(parmStr));
 //        System.out.println(md5Encode("hello world"));
+        System.out.println("http://vi.smartnews.qq.com/v2/open/voice_search?appid=common_demo&timestamp="+timestamp+"&sign="+md5Encode(parmStr)+"&cate=要闻&pn=1&rn=10");
     }
 }

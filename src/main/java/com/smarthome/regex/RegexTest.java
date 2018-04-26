@@ -135,4 +135,24 @@ public class RegexTest {
             System.out.println(m.group(3));//group返回找到的子串
         }
     }
+
+    @Test
+    public void test_06(){
+        /**
+         * 2018-04-03 15:17:03.552 DEBUG [pool-3-thread-1][BrokerStatusLogHandler.java:53] - Action [UNSUB] Broker [172.31.34.128] Cid [00D0BAE4500BC99991B578E0] topic [$events/broker/00D0BAE4500BC99991B578E0/binded/1524569785123]
+         2018-04-03 15:17:03.588 DEBUG [pool-3-thread-3][BrokerStatusLogHandler.java:33] - Action [DISCONNECT] Broker [172.31.34.128] Cid [00D0BAE4500BC99991B578E0] Content [disconnect]
+         2018-04-03 15:17:03.590 DEBUG [pool-3-thread-3][BrokerStatusLogHandler.java:45] - Action [PUBLISH] Broker [172.31.34.128] Cid [phihome_admin] topic [$events/broker/00D0BAE4500BC99991B578E0/disconnected] body [] qos [0]
+         */
+        String str = "为True时，本次返回的req_num条数据,,,,.,.,<><><====11|||||ZZZasd'''';;;;;要求全部是带人工语音的新闻";
+        String reg = "[^\\u4e00-\\u9fa5A-Za-z0-9]";//匹配中文、字母和数字
+        //将规则封装成对象。
+        Pattern p = Pattern.compile(reg);
+        //让正则对象和要作用的字符串相关联。获取匹配器对象。
+        Matcher m  = p.matcher(str);
+        String s = str.replaceAll(reg, "");
+        System.out.println(s);
+//        while(m.find()) {
+//            System.out.println(m.group());//group返回找到的子串
+//        }
+    }
 }
