@@ -134,7 +134,7 @@ public class HttpUtil {
 		
 		CloseableHttpClient httpclient = HttpClients.createDefault();
 		HttpPost httpPost = new HttpPost(url);// 创建httpPost   
-    	httpPost.setHeader("Accept", "application/json"); 
+//    	httpPost.setHeader("Accept", "application/json");
     	httpPost.setHeader("Content-Type", "application/json");
     	String charSet = "UTF-8";
     	StringEntity entity = new StringEntity(params, charSet);
